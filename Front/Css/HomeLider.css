@@ -1,0 +1,164 @@
+﻿.body {
+    background-image: url('../Images/Imgsenaprincipal.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div {
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+.generalpad {
+    padding: 50px;
+}
+
+.h2 {
+    color: black;
+    text-align: center;
+}
+
+.pattern{
+    background-color:white;
+}
+
+.sub{
+    margin-top: 3%;
+    text-align:left;
+    font-size: 15px;
+}
+
+.flex{
+    display:flex;
+}
+
+th {
+    pointer-events: none;
+}
+
+    th#especialidadColumn {
+        width: 350px; /* Puedes ajustar el valor según tus necesidades */
+    }
+
+
+
+    /*ID DE ENCABEZADOS DE LA TABLA NUMERO 3*/
+    th#thcodigofichaaprendiz {
+        width: 15px; /* Puedes ajustar el valor según tus necesidades */
+    }
+
+    th#thnumerodocumentoaprendiz {
+        width: 15px; /* Puedes ajustar el valor según tus necesidades */
+    }
+    th#thapellidoaprendiz {
+        width: 15px; /* Puedes ajustar el valor según tus necesidades */
+    }
+
+    th#thnombreaprendiz {
+        width: 15px; /* Puedes ajustar el valor según tus necesidades */
+    }
+    th#visi1 {
+        width: 15px; /* Puedes ajustar el valor según tus necesidades */
+    }
+    th#visi2 {
+        width: 15px; /* Puedes ajustar el valor según tus necesidades */
+    }
+    th#visi3 {
+        width: 15px; /* Puedes ajustar el valor según tus necesidades */
+    }
+
+.container {
+    display: flex; /* Add this line to make the container a flex container */
+    justify-content: center;
+    align-items: center;
+}
+
+.nuevo{
+    min-width :auto;
+    display: flex;
+}
+
+.boton {
+    color:white; 
+    margin-top: 3%;
+    background-color: rgb(59, 172, 5);
+}
+
+    .boton:hover {
+        background-color: rgb(41, 208, 50);
+    }
+
+
+.custom-calendar {
+    width: 150px; /* Ajusta el ancho según tus necesidades */
+    height: 150px; /* Ajusta la altura según tus necesidades */
+}
+
+.marginlabel{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+.newmargin {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.green {
+    background-color: rgb(59, 172, 5);
+    width: 200px;
+}
+
+.greenmin {
+    background-color: rgb(59, 172, 5);
+
+}
+
+.desplegable{
+    position: initial;
+    width:200px;
+    height:200px;
+}
+
+/*para ocultar divs*/
+
+.c1, .c2, .c3, .c4, .c5 {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column; /* Asegurar que los elementos se apilen verticalmente */
+   
+}
+
+.div {
+    flex: 1; /* Hacer que el div ocupe todo el espacio disponible en el contenedor principal */
+}
+
+
+
+
+/*SEGUNDO PANEL*/
+
+
+
+
+
+
+/* Puedes agregar estilos adicionales según sea necesario */
+
+
+
+

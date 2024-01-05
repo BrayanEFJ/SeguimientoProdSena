@@ -1,0 +1,65 @@
+﻿.body {
+    background-image: url('../Images/Imgsenaprincipal.jpeg');
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+    background-position: center; /* Centra la imagen en el fondo */
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.div {
+    width: 380px;
+    height: 420px;
+    background-color: white;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column; /* Para que los elementos se apilen verticalmente */
+    align-items: center; /* Para centrar horizontalmente los elementos dentro del div */
+}
+
+.margin {
+    
+    display: flex;
+    flex-direction: column; /* Para que los elementos se apilen verticalmente */
+    justify-content: center; /* Centra el contenido verticalmente dentro del div */
+    align-items: center; /* Centra el contenido horizontalmente dentro del div */
+    height: 70vh;
+    width: 500px;
+    padding: 20px;
+}
+
+.button {
+    margin-top: 20px;
+    background-color: rgb(59, 172, 5);
+    padding: 10px;
+    border: none; /* Elimina el borde del botón */
+    border-radius: 15px; /* Establece un radio de borde para lograr la forma redondeada */
+    color: white; /* Cambia el color del texto a blanco para mejorar la legibilidad */
+    cursor: pointer; /* Agrega un indicador de cursor para indicar que es interactivo */
+    
+}
+    .button:hover {
+        background-color: rgb(41, 208, 50); /* Cambia el color a rojo cuando el mouse está encima */
+    }
+
+
+.green {
+    background-color: rgb(59, 172, 5);
+    width: 220px;
+}
+
+.margin .form-floating label{
+    margin-bottom: 7px;
+    margin-top:7px;
+}
+
+.image {
+    margin-bottom: 15px;
+    margin-top: 7px;
+    max-height: 70px;
+    max-width: 70px;
+}
