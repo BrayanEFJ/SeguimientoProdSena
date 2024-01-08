@@ -49,27 +49,7 @@ th {
 
 
     /*ID DE ENCABEZADOS DE LA TABLA NUMERO 3*/
-    th#thcodigofichaaprendiz {
-        width: 15px; /* Puedes ajustar el valor según tus necesidades */
-    }
-
-    th#thnumerodocumentoaprendiz {
-        width: 15px; /* Puedes ajustar el valor según tus necesidades */
-    }
-    th#thapellidoaprendiz {
-        width: 15px; /* Puedes ajustar el valor según tus necesidades */
-    }
-
-    th#thnombreaprendiz {
-        width: 15px; /* Puedes ajustar el valor según tus necesidades */
-    }
-    th#visi1 {
-        width: 15px; /* Puedes ajustar el valor según tus necesidades */
-    }
-    th#visi2 {
-        width: 15px; /* Puedes ajustar el valor según tus necesidades */
-    }
-    th#visi3 {
+    th[id^="th"] {
         width: 15px; /* Puedes ajustar el valor según tus necesidades */
     }
 
@@ -140,25 +120,16 @@ th {
 .container-fluid {
     display: flex;
     flex-direction: column; /* Asegurar que los elementos se apilen verticalmente */
-   
 }
+
 
 .div {
     flex: 1; /* Hacer que el div ocupe todo el espacio disponible en el contenedor principal */
 }
 
-
-
-
-/*SEGUNDO PANEL*/
-
-
-
-
-
-
-/* Puedes agregar estilos adicionales según sea necesario */
-
+.fila-seleccionada {
+    background-color: #add8e6; /* Puedes ajustar el color según tus preferencias */
+}
 
 
 

@@ -45,7 +45,7 @@ function Ingresarsistema() {
                             window.location.href = "HomeLider.html";
                         }
                         else {
-                            window.location.href = "HomeCoordinador.aspx";
+                            window.location.href = "HomeCoordinador.html";
                         }
                     } else {
                         alert(`Credenciales incorrectas`);

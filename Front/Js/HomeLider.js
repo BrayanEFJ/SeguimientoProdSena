@@ -47,7 +47,7 @@ document.getElementById('iconButton').addEventListener('mouseleave', function ()
 
 //funcion de accion para cerrar sesion en el sistema
 document.getElementById('btncerrarsesion').addEventListener('click', function () {
-    window.location.href = "IndexSena.aspx";
+    window.location.href = "Indexhtml.html";
 });
 
 //funcion de prueba mostrar divs
@@ -266,3 +266,28 @@ document.addEventListener("DOMContentLoaded", function () {
     //queda pendiente traer la variable de nombre (intentos fallidos)
 
 });
+
+    $(document).ready(function () {
+        // Agrega un evento de clic a las filas de la tabla
+        $('#tablareg tbody').on('click', 'tr', function () {
+            // Remueve la clase de color de fondo de todas las filas
+            $('#tablareg tbody tr').removeClass('fila-seleccionada');
+
+            // Añade la clase de color de fondo a la fila clicada
+            $(this).addClass('fila-seleccionada');
+            
+            $('#CodigoFicha').prop('disabled', true);
+
+            // Obtiene los datos de todas las celdas de la fila clicada
+            var rowData = $(this).find('td').map(function () {
+                return $(this).text();
+            }).get();
+
+            // Actualiza el valor del campo de texto con el primer dato (código de ficha)
+            $('#CodigoFicha').val(rowData[0]);
+           
+
+        });
+    });
+
+
