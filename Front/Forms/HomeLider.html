@@ -75,7 +75,7 @@
                         <h2 class="h2 sub">Fichas proximas a salir a etapa productiva</h2>
                     </div>
                     <div class="container">
-                        <button type="button" class="btn boton">Modificar Asignación</button>
+                        <button type="button" class="btn boton" id="btnmodasignacion">Modificar Asignación</button>
                     </div>
                 </div>
 
@@ -94,10 +94,7 @@
                                     <div class="dropdown show">
                                         <a class="btn btn-secondary dropdown-toggle green" href="#" role="button" id="CboInstructores" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seleccione Instructor...</a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#" onclick="seleccionarInstructor('Instructor 1')">Instructor 1</a>
-                                            <a class="dropdown-item" href="#" onclick="seleccionarInstructor('Instructor 2')">Instructor 2</a>
-                                            <a class="dropdown-item" href="#" onclick="seleccionarInstructor('Instructor 3')">Instructor 3</a>
-                                            <a class="dropdown-item" href="#" onclick="seleccionarInstructor('Instructor 4')">Instructor 4</a>
+                                            <!-- Aca irian los items de los nombres de los instructores -->
                                         </div>
                                     </div>
                                 </div>
@@ -120,9 +117,9 @@
                                     <div class="dropdown show">
                                         <a class="btn btn-secondary dropdown-toggle green" href="#" role="button" id="CboEstado" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seleccione Estado...</a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#" onclick="seleccionarEstado('En ejecución')">En ejecución</a>
-                                            <a class="dropdown-item" href="#" onclick="seleccionarEstado('Finalizado')">Finalizado</a>
-                                            <a class="dropdown-item" href="#" onclick="seleccionarEstado('Pendiente')">Pendiente</a>
+                                            <a class="dropdown-item" href="#" onclick="seleccionarEstado('VIGENTE')">VIGENTE</a>
+                                            <a class="dropdown-item" href="#" onclick="seleccionarEstado('CADENA DE FORMACIÓN')">CADENA DE FORMACIÓN</a>
+                                            <a class="dropdown-item" href="#" onclick="seleccionarEstado('TERMINADO')">TERMINADO</a>
                                         </div>
                                     </div>
                                 </div>
@@ -130,10 +127,10 @@
                         </div>
                     </div>
                     <div class="container">
-                        <button type="button" class="btn boton">Guardar Cambios</button>
+                        <button type="button" class="btn boton" id="btnguardarcambios">Guardar Cambios</button>
                     </div>
                     <div class="container marginlabel">
-                        <button type="button" class="btn boton">Asignar</button>
+                        <button type="button" class="btn boton" id="btnasignar">Asignar</button>
                     </div>
                 </div>
             </div>
