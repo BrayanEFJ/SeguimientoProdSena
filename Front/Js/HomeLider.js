@@ -139,12 +139,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     mostrarfichassinasignacion();
-
-    setTimeout(() => {
-        initializeDataTable('tablareg');
-    }, 600);
+    
    
 });
+
+
+
 
 
 
@@ -157,47 +157,52 @@ function formatearFecha(fecha) {
 
 function mostrarfichassinasignacion() {
 
-    const startTime = performance.now();
-    
-    fetch('https://SeguimientoSena.somee.com/Fichas/TraerFichas')
-        .then(response => response.json())
-        .then(data => {
+        const startTime = performance.now();
 
-            const elapsedTime = performance.now() - startTime;
+        fetch('https://SeguimientoSena.somee.com/Fichas/TraerFichas')
+            .then(response => response.json())
+            .then(data => {
 
-            // Mostrar el tiempo en la consola
-            
+                const elapsedTime = performance.now() - startTime;
 
-            setTimeout(() => {
-                alert(`Tiempo transcurrido: ${elapsedTime} milisegundos`);
-            }, 300);
+                // Mostrar el tiempo en la consola
 
-            // Obtener la tabla body
-            var tablaBody = document.getElementById('tablaBody');
+                setTimeout(() => {
+                    alert(`Tiempo transcurrido: ${elapsedTime} milisegundos`);
+                }, 300);
 
-            // Función para formatear la fecha
-            
-            // Verificar si los datos están presentes y no son nulos
-            if (data && data.length > 0) {
-                tablaBody.innerHTML = '';
+                const tablaFichas = $('#tablareg').DataTable();
+                if (tablaFichas) {
+                    tablaFichas.destroy();
+                }
+                // Obtener la tabla body
+                var tablaBody = document.getElementById('tablaBody');
 
-                // Iterar sobre los datos y agregar filas a la tabla
-                data.forEach(item => {
-                    var row = tablaBody.insertRow();
-                    row.insertCell(0).textContent = item.codigoFicha || '';
-                    row.insertCell(1).textContent = item.especialidadFicha || '';
-                    row.insertCell(2).textContent = formatearFecha(item.fechaInicioLectivaFicha) || '';
-                    row.insertCell(3).textContent = formatearFecha(item.fechaFinLectivaFicha) || '';
-                    row.insertCell(4).textContent = formatearFecha(item.fechaInicioProductivaFicha) || '';
-                    row.insertCell(5).textContent = formatearFecha(item.fechaFinProductivaFicha) || '';
-                });
-            } else {
-                console.error('La respuesta de la API está vacía o no es válida.');
-            }
-            
-        })
-        .catch(error => console.error('Error al obtener datos de la API:', error));
-   
+                // Función para formatear la fecha
+
+                // Verificar si los datos están presentes y no son nulos
+                if (data && data.length > 0) {
+                    tablaBody.innerHTML = '';
+
+                    // Iterar sobre los datos y agregar filas a la tabla
+                    data.forEach(item => {
+                        var row = tablaBody.insertRow();
+                        row.insertCell(0).textContent = item.codigoFicha || '';
+                        row.insertCell(1).textContent = item.especialidadFicha || '';
+                        row.insertCell(2).textContent = formatearFecha(item.fechaInicioLectivaFicha) || '';
+                        row.insertCell(3).textContent = formatearFecha(item.fechaFinLectivaFicha) || '';
+                        row.insertCell(4).textContent = formatearFecha(item.fechaInicioProductivaFicha) || '';
+                        row.insertCell(5).textContent = formatearFecha(item.fechaFinProductivaFicha) || '';
+                    });
+
+                    initializeDataTable('tablareg');
+                } else {
+                    console.error('La respuesta de la API está vacía o no es válida.');
+                }
+
+            })
+            .catch(error => console.error('Error al obtener datos de la API:', error));
+         
 }
 
 function mostrarfichasasignadas() {
