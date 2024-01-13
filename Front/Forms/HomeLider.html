@@ -12,29 +12,30 @@
 
 <body class="body">
     <div>
-        
-            <div class="btn-group" id="iconButton" style="margin-left: 20px;">
-                <button type="button" class="btn btn-secondary boton green">
-                    <img src="../Images/menu.png" class="rounded-circle" width="24" height="24" />
-                </button>
-                <div class="dropdown-menu">
-                    <!-- Agrega aquí las opciones del menú -->
-                    <a class="dropdown-item" href="#" id="MenuAsignamiento">Asignamiento</a>
-                    <a class="dropdown-item" href="#" id="MenuFichas">Fichas por terminar</a>
-                    <a class="dropdown-item" href="#" id="MenuSeguimiento">Seguimientos</a>
-                    <hr />
-                    <a class="dropdown-item" id="btncerrarsesion" href="#">Cerrar sesión</a>
-                </div>
+
+        <div class="btn-group" id="iconButton">
+            <button type="button" class="btn btn-secondary boton green">
+                <img src="../Images/menu.png" class="rounded-circle" width="24" height="24" />
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <!-- Agrega aquí las opciones del menú -->
+                <a class="dropdown-item" href="#" id="MenuAsignamiento">Asignamiento</a>
+                <a class="dropdown-item" href="#" id="MenuFichas">Fichas por terminar</a>
+                <a class="dropdown-item" href="#" id="MenuSeguimiento">Seguimientos</a>
+                <hr class="d-sm-none" /> <!-- Línea horizontal visible solo en tamaños pequeños -->
+                <a class="dropdown-item" id="btncerrarsesion" href="#">Cerrar sesión</a>
             </div>
-        
-        <div class="container-fluid bg-white generalpad c1" style="margin-left: 20px;" id="PanelAsignamiento">
-            
-            <div class="row ">
-                <h7 id="NombreUsuario">Bienvenid@ Lider</h7>
+        </div>
+
+
+        <div class="container-fluid bg-white generalpad c1" id="PanelAsignamiento">
+
+            <div class="row">
+                <h7 class="col-sm-12" style="margin-left: 20px;" id="NombreUsuario">Bienvenid@ Lider</h7>
             </div>
             <!-- Contenedor fluido con fondo blanco -->
             <div style="display: flex">
-                
+
                 <!-- Contenido de div1 -->
                 <div class="div">
                     <div class="row">
@@ -71,8 +72,8 @@
                             </table>
                         </div>
                     </div>
-                    <div>
-                        <h2 class="h2 sub">Fichas proximas a salir a etapa productiva</h2>
+                    <div class="row">
+                        <h7 class="col-sm-12 h2 sub" style="margin-left: 20px;">Fichas proximas a salir a etapa productiva</h7>
                     </div>
                     <div class="container">
                         <button type="button" class="btn boton" id="btnmodasignacion">Modificar Asignación</button>
