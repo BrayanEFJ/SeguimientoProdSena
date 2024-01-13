@@ -132,4 +132,10 @@ th {
 }
 
 
+    /* Estilo del tooltip visible al pasar el mouse */
+.newmargin:hover::before {
+    content: attr(title);
+}
+
+
 
