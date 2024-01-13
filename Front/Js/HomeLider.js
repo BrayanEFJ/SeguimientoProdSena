@@ -271,23 +271,31 @@ function mostraraprendicesfichas() {
             if (data && data.length > 0) {
                 tablaBody.innerHTML = '';
 
-                data.forEach(item => {
-                    var row = tablaBody.insertRow();
-                    row.insertCell(0).textContent = item.codigoFicha || '';
-                    row.insertCell(1).textContent = item.numeroDocumentoAprendiz || '';
-                    row.insertCell(2).textContent = item.apellidosAprendiz || '';
-                    row.insertCell(3).textContent = item.nombresAprendiz || '';
-                    row.insertCell(4).textContent = item.visita1Seguimiento ? formatearFecha(item.visita1Seguimiento) : '';
-                    row.insertCell(5).textContent = item.visita2Seguimiento ? formatearFecha(item.visita2Seguimiento) : '';
-                    row.insertCell(6).textContent = item.visita3Seguimiento ? formatearFecha(item.visita3Seguimiento) : '';
-                });
+                var descripcionr = data[0];
+                if (descripcionr.numeroDocumentoAprendiz == null) {
+                    tablaBody.innerHTML = 'Null data.';
+                    swal("sin datos", "Esta ficha no tiene una asignación","error")
+                }
 
-                initializeDataTableRecargado('tablafichasunicas', estadoActual);
-
+                else {
+                    data.forEach(item => {
+                        var row = tablaBody.insertRow();
+                        row.insertCell(0).textContent = item.codigoFicha || '';
+                        row.insertCell(1).textContent = item.numeroDocumentoAprendiz || '';
+                        row.insertCell(2).textContent = item.apellidosAprendiz || '';
+                        row.insertCell(3).textContent = item.nombresAprendiz || '';
+                        row.insertCell(4).textContent = item.visita1Seguimiento ? formatearFecha(item.visita1Seguimiento) : '';
+                        row.insertCell(5).textContent = item.visita2Seguimiento ? formatearFecha(item.visita2Seguimiento) : '';
+                        row.insertCell(6).textContent = item.visita3Seguimiento ? formatearFecha(item.visita3Seguimiento) : '';
+                    });
+                    initializeDataTableRecargado('tablafichasunicas', estadoActual);
+                }
             } else {
                 console.error('La respuesta de la API está vacía o no es válida.');
-                alert("Esta ficha no tiene información actual sobre seguimientos");
+                swal("sin datos", "Esta ficha no tiene información actual sobre seguimientos", "error")
+                limpiarCampos();
                 tablaBody.innerHTML = 'Null data.';
+                
             }
         })
         .catch(error => console.error('Error al obtener datos de la API:', error));
@@ -325,6 +333,10 @@ function MostrarNombreInstructores() {
 function Parafechas() {
     const today = new Date().toISOString().split('T')[0];
     inicioCalendario.min = today;
+    fechavisita1.min = today;
+    
+    fechavisita3.min = fechavisita2.value;
+
     inicioCalendario.addEventListener('change', function () {
         // Obtener la fecha seleccionada en el primer calendario
         const fechaInicio = new Date(this.value);
@@ -348,6 +360,16 @@ function Parafechas() {
             // Actualizar el valor del calendario de fin
             finCalendario.value = fechaInicio.toISOString().split('T')[0];
         }
+    });
+    fechavisita1.addEventListener('change', function () {
+        // Obtener la fecha seleccionada en el primer calendario
+        fechavisita2.min = fechavisita1.value;
+
+    });
+
+    fechavisita2.addEventListener('change', function () {
+        // Obtener la fecha seleccionada en el primer calendario
+        fechavisita3.min = fechavisita2.value;
     });
 }
 function cambiarBotones() {
@@ -462,7 +484,7 @@ function mostrardatosantesdeguardar() {
                 });
             }
             else {
-                alert("Actualizacion Exitosa");
+                swal("Actualizado con exito","","success")
                 mostraraprendicesfichas();
                 revisar();
                 
@@ -471,8 +493,6 @@ function mostrardatosantesdeguardar() {
         })
         .catch(error => {
             console.error('Error en la actualización:', error);
-            alert(response.text());
-            alert("Error en la actualización. Consulta la consola para obtener más detalles.");
         });
 }
 
