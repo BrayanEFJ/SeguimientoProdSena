@@ -102,7 +102,12 @@ document.getElementById('MenuSeguimiento').addEventListener('click', function ()
     mostrarDiv('c3')
 });
 
+document.getElementById('Buscaraprenfichas').addEventListener('click', function () {
+    mostrardatosantesdeguardar();
+});
 
+
+Buscaraprenfichas
 function mostrarDiv(divClass) {
     // Oculta todos los divs al hacer clic en una opción del menú
     var divs = document.querySelectorAll('.container-fluid');
@@ -246,37 +251,38 @@ let filaSeleccionadaIndex;
 
 function mostraraprendicesfichas() {
     const codigodefichabuscar = document.getElementById("Codfichasearchseg").value;
-    const apiUrl = `https://SeguimientoSena.somee.com/Seguimientodto/TraerinformacionAprendices/${codigodefichabuscar}`
-
-    const tablaFichas = $('#tablafichasunicas').DataTable();
-
-    // Guardar el estado actual de DataTables
-    const estadoActual = tablaFichas.state.loaded();
-
-    // Guardar el índice de la fila seleccionada actual antes de destruir la tabla
-    const filaSeleccionada = tablaFichas.row('.fila-seleccionada');
-    filaSeleccionadaIndex = filaSeleccionada.length > 0 ? filaSeleccionada.index() : null;
-    console.log('Fila seleccionada antes de destruir la tabla:', filaSeleccionadaIndex);
+    const apiUrl = `https://SeguimientoSena.somee.com/Seguimientodto/TraerinformacionAprendices/${codigodefichabuscar}`;
 
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            var tablaBody = document.getElementById('tablabodyfichasandaprend');
 
-            // Destruir la tabla
+            const tablaFichas = $('#tablafichasunicas').DataTable();
+            // Guardar el estado actual de DataTables
+            const estadoActual = tablaFichas.state.loaded();
+
+            // Guardar el índice de la fila seleccionada actual antes de destruir la tabla
+            const filaSeleccionada = tablaFichas.row('.fila-seleccionada');
+            filaSeleccionadaIndex = filaSeleccionada.length > 0 ? filaSeleccionada.index() : null;
+            console.log('Fila seleccionada antes de destruir la tabla:', filaSeleccionadaIndex);
+
             if (tablaFichas) {
+
                 tablaFichas.destroy();
             }
+
+            var tablaBody = document.getElementById('tablabodyfichasandaprend');
 
             if (data && data.length > 0) {
                 tablaBody.innerHTML = '';
 
                 var descripcionr = data[0];
                 if (descripcionr.numeroDocumentoAprendiz == null) {
+                    limpiarCampos();
                     tablaBody.innerHTML = 'Null data.';
-                    swal("sin datos", "Esta ficha no tiene una asignación","error")
+                    swal("sin datos", "Esta ficha no tiene una asignación", "error");
                 }
-
+                
                 else {
                     data.forEach(item => {
                         var row = tablaBody.insertRow();
@@ -288,6 +294,7 @@ function mostraraprendicesfichas() {
                         row.insertCell(5).textContent = item.visita2Seguimiento ? formatearFecha(item.visita2Seguimiento) : '';
                         row.insertCell(6).textContent = item.visita3Seguimiento ? formatearFecha(item.visita3Seguimiento) : '';
                     });
+                    
                     initializeDataTableRecargado('tablafichasunicas', estadoActual);
                 }
             } else {
@@ -492,7 +499,7 @@ function mostrardatosantesdeguardar() {
             return response.text();
         })
         .catch(error => {
-            console.error('Error en la actualización:', error);
+            swal("Error en la actualización", "", "error")
         });
 }
 
