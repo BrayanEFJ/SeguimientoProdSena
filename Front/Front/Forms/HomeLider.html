@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="../Css/HomeLider.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-xr2db03h1IgUGFIqM46esxOfpZbyUGRn+0cb6mEVpBcwOoPeOqntIycEJczsOtgmJKb5Ys6E4g5Pf1D04ntbPw==" crossorigin="anonymous" />
+
+    <title>Lider Seguimiento</title>
+</head>
+
+<body class="body">
+    <div>
+
+        <div class="btn-group" id="iconButton">
+            <button type="button" class="btn btn-secondary boton green">
+                <img src="../Images/menu.png" class="rounded-circle" width="24" height="24" />
+            </button>
+            <div class="dropdown-menu dropdown-menu-left" style="margin-left:65px;">
+                <!-- Agrega aquí las opciones del menú -->
+                <a class="dropdown-item" href="#" id="MenuAsignamiento">Asignamiento</a>
+                <a class="dropdown-item" href="#" id="MenuFichas">Fichas por terminar</a>
+                <a class="dropdown-item" href="#" id="MenuSeguimiento">Seguimientos</a>
+                <hr /> <!-- Línea horizontal visible solo en tamaños pequeños -->
+                <a class="dropdown-item" id="btncerrarsesion" href="#">Cerrar sesión</a>
+            </div>
+        </div>
+
+
+        <div class="container-fluid bg-white generalpad c1" id="PanelAsignamiento">
+
+            <div class="row">
+                <h7 class="col-sm-12" style="margin-left: 20px;" id="NombreUsuario">Bienvenid@ Lider</h7>
+            </div>
+            <!-- Contenedor fluido con fondo blanco -->
+            <div style="display: flex">
+
+                <!-- Contenido de div1 -->
+                <div class="div">
+                    <div class="row">
+                        <div class="col-12 ">
+                            <h2 class="h2">Asignamiento</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="custom-control custom-radio" style="margin-left: 30px">
+                            <input type="radio" id="radio1" name="customRadio" class="custom-control-input" />
+                            <label class="custom-control-label" for="radio1">Fichas por asignar</label>
+                        </div>
+                        <div class="custom-control custom-radio" style="margin-left: 60px">
+                            <input type="radio" id="radio2" name="customRadio" class="custom-control-input" />
+                            <label class="custom-control-label" for="radio2">Fichas ya asignadas</label>
+                        </div>
+                    </div>
+                    <div class="container mt-3">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="tablareg">
+                                <thead>
+                                    <tr>
+                                        <th id="CodigoColumn">Codigo</th>
+                                        <th id="especialidadColumn">Especialidad</th>
+                                        <th id="Fecha1Column">Fecha inicio lectiva</th>
+                                        <th id="Fecha2Column">Fecha fin lectiva</th>
+                                        <th id="Fecha3Column">Fecha inicio productiva</th>
+                                        <th id="Fecha4Column">Fecha fin productiva</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaBody">
+                                    <!-- Tus datos van aquí -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h7 class="col-sm-12 h2 sub" style="margin-left: 20px;">Fichas proximas a salir a etapa productiva (Quedan a dia de hoy 1 mes o menos para el inicio de su etapa productiva)</h7>
+                    </div>
+                    <div class="container">
+                        <button type="button" class="btn boton" id="btnmodasignacion" onclick="desbloquearcamposasignadas()">Modificar Asignación</button>
+                    </div>
+                </div>
+
+                <!-- Programación del div2 -->
+                <div class="col-sm-3 ">
+                    <div class="container" id="div2">
+                        <!-- Contenido de div2 -->
+                        <div class="div">
+                            <div class="marginlabel">
+                                <label for="CodigoFicha">Ficha seleccionada</label>
+                                <input type="number" class="form-control" id="CodigoFicha" />
+                            </div>
+                            <div class="marginlabel">
+                                <label for="NombreInstructor">Instructor</label>
+                                <input type="text" class="form-control" id="Infoinstructor" />
+                            </div>
+                            <div class="marginlabel">
+                                <label for="InicioAsignacion">Inicio de la asignacion</label>
+                                <input type="date" class="form-control" id="InicioAsignacion" />
+                            </div>
+                            <div class="marginlabel">
+                                <label for="FinAsignacion">Fin de la asignacion</label>
+                                <input type="date" class="form-control" id="FinAsignacion" />
+                            </div>
+                            <div class="marginlabel">
+                                <label for="CboEstado">Estado</label>
+                                <div class="dropdown">
+                                    <div class="dropdown show">
+                                        <a class="btn btn-secondary dropdown-toggle green" href="#" role="button" id="CboEstado" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seleccione Estado...</a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" href="#" onclick="seleccionarEstado('Seleccione Estado...')">Seleccione Estado...</a>
+                                            <a class="dropdown-item" href="#" onclick="seleccionarEstado('VIGENTE')">VIGENTE</a>
+                                            <a class="dropdown-item" href="#" onclick="seleccionarEstado('CADENA DE FORMACIÓN')">CADENA DE FORMACIÓN</a>
+                                            <a class="dropdown-item" href="#" onclick="seleccionarEstado('TERMINADO')">TERMINADO</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <button type="button" class="btn boton" id="btnguardarcambios" onclick="validarcampos()">Guardar Cambios</button>
+                    </div>
+                    <div class="container marginlabel">
+                        <button type="button" class="btn boton" id="btnasignar" onclick="validarcampos();">Asignar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segundo panel -->
+        <div class="container-fluid bg-white generalpad c2" id="PanelFichas">
+            <div class="row">
+                <div class="col-12 ">
+                    <h2 class="h2">Fichas por terminar</h2>
+                </div>
+            </div>
+            <div class="marginlabel" style="text-align: center;">
+                <h6 style="margin-bottom: 10px;">A continuación, selecciona la etapa de la ficha para que puedan ser filtradas</h6>
+                <div class="dropdown">
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle green" href="#" role="button" id="Cboficha" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seleccione...</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#" onclick="seleccionarFichapen('General')">General</a>
+                            <a class="dropdown-item" href="#" onclick="seleccionarFichapen('Lectiva')">Lectiva</a>
+                            <a class="dropdown-item" href="#" onclick="seleccionarFichapen('Productiva')">Productiva</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-3">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tablafichas">
+                        <thead>
+                            <tr>
+                                <th>Codigo Ficha</th>
+                                <th>Codigo Programa</th>
+                                <th>Especialidad</th>
+                                <th>Inicio lectiva</th>
+                                <th>Fin lectiva</th>
+                                <th>Inicio productiva</th>
+                                <th>Fecha productiva</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Tus datos van aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Tercer panel , la clave para cuadrar este panel está en el class div del primer panel-->
+        <div class="container-fluid bg-white generalpad c3" id="PanelSeguimiento">
+            <div style="display: flex">
+                <div class="div max">
+                    <div class="row">
+                        <div class="col-12 ">
+                            <h2 class="h2">Seguimientos</h2>
+                        </div>
+                    </div>
+
+                    <div class="marginlabel text-center mx-auto" style="max-width: 300px;">
+                        <h6 style="margin-bottom: 10px;">Digita el código de la ficha</h6>
+                        <div class="d-flex flex-row align-items-center">
+                            <input type="number" class="form-control" id="Codfichasearchseg" style="margin-right: 15px" />
+                            <div class="btn-group" id="iconobuscar">
+                                <button type="button" class="btn boton greenmin" onclick="mostraraprendicesfichas()">
+                                    <img src="../Images/lupa.png" class="rounded-circle" width="24" height="24" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- faltaría un row -->
+                    <div class="container mt-3">
+                        <div class="table-responsive" style="max-width: 600px;">
+                            <table class="table table-bordered" id="tablafichasunicas">
+                                <thead>
+                                    <tr>
+                                        <th id="thcodigofichaaprendiz">Código ficha</th>
+                                        <th id="thnumerodocumentoaprendiz">Número documento</th>
+                                        <th id="thapellidoaprendiz">Apellidos</th>
+                                        <th id="thnombreaprendiz">Nombre</th>
+                                        <th id="visi1">Visita 1</th>
+                                        <th id="visi2">Visita 2</th>
+                                        <th id="visi3">Visita 3</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablabodyfichasandaprend">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="container d-flex align-items-center justify-content-center">
+                    <div class="div">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <h3>Información de seguimientos</h3>
+                        </div>
+                        <br />
+                        <div class="d-flex align-items-center justify-content-center">
+                            <h6 id="fichapersona">ficha de la persona</h6>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <h6 id="Nombredelapersona">Nombre de la persona</h6>
+                        </div>
+                        <br />
+
+                        <div class="container">
+                            <div class="newmargin d-inline mr-5">
+                                <label for="Visita1">Visita 1</label>
+                                <input type="date" class="form-control" id="Visita1" />
+                            </div>
+                            <div class="newmargin d-inline">
+                                <label for="Observacion1">Observacion 1</label>
+                                <input type="text" class="form-control" id="Observacion1" />
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="newmargin d-inline mr-5">
+                                <label for="Visita2">Visita 2</label>
+                                <input type="date" class="form-control" id="Visita2" />
+                            </div>
+                            <div class="newmargin d-inline">
+                                <label for="Observacion2">Observacion 2</label>
+                                <input type="text" class="form-control" id="Observacion2" />
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="newmargin d-inline mr-5">
+                                <label for="Visita3">Visita 3</label>
+                                <input type="date" class="form-control" id="Visita3" />
+                            </div>
+                            <div class="newmargin d-inline">
+                                <label for="Observacion3">Observacion 3</label>
+                                <input type="text" class="form-control" id="Observacion3" />
+                            </div>
+                        </div>
+                        <div class="container">
+                            <button type="button" class="btn boton" id="Buscaraprenfichas">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Primer panel -->
+    <!-- Scripts necesarios -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-m9Bg6A4zOT2VlAdlDlP4df7Se9C36Vq0aYsI1lSM7PH3A6ScZJk9dQTcoIIt9Mbh" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- jQuery UI Autocomplete -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Script para DataTables en español -->
+    <script src="https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"></script>
+    <!-- Script para alertas -->
+    <script src=" https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
+    <!-- Tu script personalizado -->
+    <script src="../Js/HomeLider.js"></script>
+</body>
+
+</html>
